@@ -11,6 +11,10 @@
     "<THIRD_PARTY_MODULES>",
     "^@/modules",
     "^@/services",
+    "^@/shared/constants",
+    "^@/shared/utils",
+    "^@/shared/types",
+    "^(.*module)$",
     "^(.*controller)$",
     "^(.*interface)$",
     "^(.*service)$"
