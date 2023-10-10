@@ -46,7 +46,7 @@ export class AuthService {
       this.jwtService,
       {
         id: user.id,
-        role: 'user',
+        role: AppConstant.user.DEFAULT_ROLE,
       },
     )
 

@@ -12,7 +12,7 @@ model User {
   firstName String @map("first_name")
   lastName  String @map("last_name")
   login     String @unique
-  role      String @default("user")
+  role      String @default("student")
   email     String @unique
   password  String
 }

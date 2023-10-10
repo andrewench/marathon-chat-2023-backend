@@ -1,4 +1,4 @@
-import { AuthModule } from './modules'
+import { AuthModule, UserModule } from './modules'
 import { Module } from '@nestjs/common'
 
 import { PrismaService } from '@/services'
@@ -6,7 +6,7 @@ import { PrismaService } from '@/services'
 import { AppService } from './app.service'
 
 @Module({
-  imports: [AuthModule],
+  imports: [AuthModule, UserModule],
   controllers: [],
   providers: [AppService, PrismaService],
 })

@@ -10,6 +10,7 @@
   "importOrder": [
     "<THIRD_PARTY_MODULES>",
     "^@/modules",
+    "^@/guards",
     "^@/services",
     "^@/shared/constants",
     "^@/shared/utils",
