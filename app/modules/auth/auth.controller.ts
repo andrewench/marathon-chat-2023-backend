@@ -4,17 +4,22 @@ import { TLoginCredentials, TSignUpCredentials } from '@/shared/types'
 
 import { AuthService } from './auth.service'
 
-@Controller()
+@Controller('/auth')
 export class AuthController {
-  constructor(private readonly appService: AuthService) {}
+  constructor(private readonly authService: AuthService) {}
 
-  @Post('/auth/login')
-  async login(@Body() credentials: TLoginCredentials) {
-    return this.appService.login(credentials)
+  @Post('/refresh')
+  async refresh(@Body() body: { refreshToken: string }) {
+    return this.authService.refresh(body)
   }
 
-  @Put('/auth/signup')
+  @Post('/login')
+  async login(@Body() credentials: TLoginCredentials) {
+    return this.authService.login(credentials)
+  }
+
+  @Put('/signup')
   async signUp(@Body() credentials: TSignUpCredentials) {
-    return this.appService.signUp(credentials)
+    return this.authService.signUp(credentials)
   }
 }

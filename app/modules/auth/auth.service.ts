@@ -3,6 +3,7 @@ import {
   ForbiddenException,
   Injectable,
   NotFoundException,
+  UnauthorizedException,
 } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
 
@@ -95,6 +96,32 @@ export class AuthService {
     return {
       accessToken,
       refreshToken,
+    }
+  }
+
+  async refresh(body: { refreshToken: string }) {
+    try {
+      const { id, role } = await this.jwtService.verifyAsync(
+        body.refreshToken,
+        {
+          secret: AppConstant.tokens.rt.SECRET_KEY,
+        },
+      )
+
+      const { accessToken, refreshToken } = await TokenService.generateTokens(
+        this.jwtService,
+        {
+          id,
+          role,
+        },
+      )
+
+      return {
+        accessToken,
+        refreshToken,
+      }
+    } catch (err) {
+      throw new UnauthorizedException()
     }
   }
 }

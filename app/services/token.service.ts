@@ -3,8 +3,8 @@ import { JwtService } from '@nestjs/jwt'
 import { AppConstant } from '@/shared/constants'
 
 export class TokenService {
-  static readonly atExpires: number = parseInt(AppConstant.tokens.at.LIFE_TIME)
-  static readonly rtExpires: number = parseInt(AppConstant.tokens.rt.LIFE_TIME)
+  static readonly atExpires: number = 60 * 15
+  static readonly rtExpires: number = 60 * 60 * 24 * 7
 
   static readonly atSecretKey: string = AppConstant.tokens.at.SECRET_KEY
   static readonly rtSecretKey: string = AppConstant.tokens.rt.SECRET_KEY
