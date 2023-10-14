@@ -18,6 +18,7 @@
     "^(.*module)$",
     "^(.*controller)$",
     "^(.*interface)$",
+    "^(.*dto)$",
     "^(.*service)$"
   ],
   "importOrderSeparation": true,

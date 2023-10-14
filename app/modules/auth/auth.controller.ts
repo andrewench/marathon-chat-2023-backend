@@ -1,6 +1,7 @@
 import { Body, Controller, Post, Put } from '@nestjs/common'
 
-import { TLoginCredentials, TSignUpCredentials } from '@/shared/types'
+import { AuthUserDto } from './dto/auth-user.dto'
+import { CreateUserDto } from './dto/create-user.dto'
 
 import { AuthService } from './auth.service'
 
@@ -14,12 +15,12 @@ export class AuthController {
   }
 
   @Post('/login')
-  async login(@Body() credentials: TLoginCredentials) {
+  async login(@Body() credentials: AuthUserDto) {
     return this.authService.login(credentials)
   }
 
   @Put('/signup')
-  async signUp(@Body() credentials: TSignUpCredentials) {
+  async signUp(@Body() credentials: CreateUserDto) {
     return this.authService.signUp(credentials)
   }
 }

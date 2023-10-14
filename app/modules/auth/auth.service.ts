@@ -11,7 +11,8 @@ import { CryptoService, PrismaService, TokenService } from '@/services'
 
 import { AppConstant } from '@/shared/constants'
 
-import { TLoginCredentials, TSignUpCredentials } from '@/shared/types'
+import { AuthUserDto } from './dto/auth-user.dto'
+import { CreateUserDto } from './dto/create-user.dto'
 
 const { responseMessage } = AppConstant
 
@@ -22,7 +23,7 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async login({ login, password }: TLoginCredentials) {
+  async login({ login, password }: AuthUserDto) {
     const user = await this.prisma.user.findFirst({
       where: {
         OR: [
@@ -57,7 +58,7 @@ export class AuthService {
     }
   }
 
-  async signUp({ login, email, password, ...others }: TSignUpCredentials) {
+  async signUp({ login, email, password, ...others }: CreateUserDto) {
     const user = await this.prisma.user.findFirst({
       where: {
         OR: [
