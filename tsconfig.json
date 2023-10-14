@@ -17,5 +17,6 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false
   },
+  "include": ["app/**/*"],
   "extends": "./tsconfig.paths.json"
 }
