@@ -37,10 +37,21 @@ export class EventsGateway
 
   @SubscribeMessage('message')
   handleMessage(@MessageBody() message: string): string {
-    console.log(message)
-
     this.server.emit('message', message)
 
     return 'hello'
+  }
+
+  @SubscribeMessage('typing')
+  handleTyping(
+    @MessageBody()
+    payload: {
+      id: number
+      firstName: string
+      lastName: string
+      isTyping: boolean
+    },
+  ) {
+    this.server.emit('typing', payload)
   }
 }
