@@ -6,6 +6,8 @@ export const AppConstant = {
     DEFAULT_ROLE: 'student',
   },
 
+  STATIC_PATH: '/uploads/images',
+
   ...EnvConstantList,
   ...ResponseConstantList,
 }

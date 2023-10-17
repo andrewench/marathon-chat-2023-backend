@@ -36,10 +36,10 @@ export class EventsGateway
   server: Server
 
   @SubscribeMessage('message')
-  handleMessage(@MessageBody() message: string): string {
-    this.server.emit('message', message)
-
-    return 'hello'
+  handleMessage(
+    @MessageBody() payload: { id: number; avatar: string; message: string },
+  ) {
+    this.server.emit('message', payload)
   }
 
   @SubscribeMessage('typing')

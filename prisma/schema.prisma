@@ -14,5 +14,6 @@ model User {
   login     String @unique
   role      String @default("student")
   email     String @unique
+  avatar    String?
   password  String
 }
