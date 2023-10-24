@@ -3,7 +3,7 @@ import { ConfigModule } from '@nestjs/config'
 import { ServeStaticModule } from '@nestjs/serve-static'
 import { join } from 'path'
 
-import { AuthModule, EventsModule, UserModule } from '@/modules'
+import { AuthModule, EventsModule, RoomModule, UserModule } from '@/modules'
 
 import { PrismaService } from '@/services'
 
@@ -15,6 +15,7 @@ import { AppConstant } from '@/shared/constants'
     AuthModule,
     UserModule,
     EventsModule,
+    RoomModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..'),
       renderPath: AppConstant.STATIC_PATH,

@@ -25,7 +25,6 @@ export class EventsGateway
 
   handleConnection(client: Socket) {
     this.Logger.log(`New client connected : ${client.id}`)
-    client.emit('connected', 'Successfully connected to the server')
   }
 
   handleDisconnect(client: Socket) {
@@ -34,6 +33,11 @@ export class EventsGateway
 
   @WebSocketServer()
   server: Server
+
+  @SubscribeMessage('join')
+  handleConnected(@MessageBody() payload) {
+    this.server.emit('join', payload)
+  }
 
   @SubscribeMessage('message')
   handleMessage(
